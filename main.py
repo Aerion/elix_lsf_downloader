@@ -24,7 +24,7 @@ class ElixClient:
         app_bundle_data = requests.get("https://dico.elix-lsf.fr/js/app.bundle.js").text
 
         self.api_url = self._extract_regex_group(r'"apiUrl":"([^"]+)', app_bundle_data, 'api url')
-        self.api_key = self._extract_regex_group(r'\?apikey=(\w+)"', app_bundle_data, 'api key')
+        self.api_key = self._extract_regex_group(r'apikey=(\w+)"', app_bundle_data, 'api key')
         self.video_url = self._extract_regex_group(r'"videosUrl":"([^"]+)', app_bundle_data, 'video base url')
 
     def _extract_regex_group(self, pattern: Pattern, haystack: str, friendly_name: str):
